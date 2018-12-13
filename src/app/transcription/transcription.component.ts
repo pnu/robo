@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Observable } from 'rxjs';
+import { StorageService, Document } from '../storage.service';
 
 @Component({
   selector: 'app-transcription',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class TranscriptionComponent implements OnInit {
+  @Input() doc: Document;
 
-  constructor() { }
+  transcription$: Observable<{}>;
+
+  constructor(private storage: StorageService) { }
 
   ngOnInit() {
+    this.transcription$ = this.storage.data$(this.doc);
   }
-
 }

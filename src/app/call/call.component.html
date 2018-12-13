@@ -5,6 +5,6 @@
   
 <div style="margin-left:30px;" *ngIf="transcriptions$ | async as transcriptions">
   <ng-container *ngFor="let transcription of transcriptions">
-    <p>something</p>
+    <app-transcription [doc]="transcription"></app-transcription>
   </ng-container>
 </div>
