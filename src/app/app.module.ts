@@ -8,11 +8,13 @@ import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule, MatIconModule } from '@angular/material';
 import { EventComponent } from './event/event.component';
+import { CallComponent } from './call/call.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EventComponent
+    EventComponent,
+    CallComponent
   ],
   imports: [
     BrowserModule,
