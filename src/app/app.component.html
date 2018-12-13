@@ -1,6 +1,6 @@
 <mat-list *ngIf="events$ | async as events">
   <h3 mat-subheader>Events</h3>
   <ng-container *ngFor="let event of events">
-    <p>not yet implemented</p>
+    <app-event [doc]="event"></app-event>
   </ng-container>
 </mat-list>

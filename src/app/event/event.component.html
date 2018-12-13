@@ -1,3 +1,10 @@
-<p>
-  event works!
-</p>
+<mat-list-item *ngIf="event$ | async as event">
+  <mat-icon mat-list-icon>folder</mat-icon>
+  <h4 mat-line>{{ event.to }}</h4>
+</mat-list-item>
+
+<div style="margin-left:30px;" *ngIf="calls$ | async as calls">
+  <ng-container *ngFor="let call of calls">
+    <p>something</p>
+  </ng-container>
+</div>
