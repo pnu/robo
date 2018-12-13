@@ -10,13 +10,15 @@ import { MatListModule, MatIconModule } from '@angular/material';
 import { EventComponent } from './event/event.component';
 import { CallComponent } from './call/call.component';
 import { TranscriptionComponent } from './transcription/transcription.component';
+import { SubmitComponent } from './submit/submit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EventComponent,
     CallComponent,
-    TranscriptionComponent
+    TranscriptionComponent,
+    SubmitComponent
   ],
   imports: [
     BrowserModule,
