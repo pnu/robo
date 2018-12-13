@@ -9,12 +9,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule, MatIconModule } from '@angular/material';
 import { EventComponent } from './event/event.component';
 import { CallComponent } from './call/call.component';
+import { TranscriptionComponent } from './transcription/transcription.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EventComponent,
-    CallComponent
+    CallComponent,
+    TranscriptionComponent
   ],
   imports: [
     BrowserModule,
