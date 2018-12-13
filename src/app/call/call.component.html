@@ -1,3 +1,10 @@
-<p>
-  call works!
-</p>
+<mat-list-item *ngIf="call$ | async as call">
+  <h4 mat-line>{{ call.CallSid }}</h4>
+  <p mat-line>{{ call.CallStatus }}</p>
+</mat-list-item>
+  
+<div style="margin-left:30px;" *ngIf="transcriptions$ | async as transcriptions">
+  <ng-container *ngFor="let transcription of transcriptions">
+    <p>something</p>
+  </ng-container>
+</div>

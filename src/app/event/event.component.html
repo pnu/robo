@@ -5,6 +5,6 @@
 
 <div style="margin-left:30px;" *ngIf="calls$ | async as calls">
   <ng-container *ngFor="let call of calls">
-    <p>something</p>
+    <app-call [doc]="call"></app-call>
   </ng-container>
 </div>
