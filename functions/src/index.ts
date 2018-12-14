@@ -26,10 +26,11 @@ export const callme = functions.pubsub.topic('callme').onPublish(async (msg, ctx
 });
 
 export const callSpecs = functions.https.onRequest(async (req, res) => {
+  const eventDoc = await db.collection('Event').doc(req.query.id).get();
   const twiml = new twilio.twiml.VoiceResponse();
   twiml.say({
     voice: 'alice'
-  }, `Hey there! What is your favorite fruit?`);
+  }, eventDoc.data().message);
   twiml.record({
     timeout: 10,
     transcribeCallback: functionUrl(`transcriptionCallback?id=${req.query.id}`)
@@ -53,9 +54,13 @@ export const transcriptionCallback = functions.https.onRequest(async (req, res) 
   res.status(200).send();
 });
 
-export const pubEvent = functions.https.onCall((nums: string[]) => {
+export const pubEvent = functions.https.onCall(args => {
+  const [nums, mesg]: [string[], string] = args;
   const publisher = ps.topic('callme').publisher();
   return Promise.all(nums.map(n => publisher.publish(
-    Buffer.from(JSON.stringify({to: n}))
+    Buffer.from(JSON.stringify({
+      to: n,
+      message: mesg || `Hey there! What is your favorite fruit?`
+    }))
   )));
 });

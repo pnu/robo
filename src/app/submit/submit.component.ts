@@ -17,9 +17,9 @@ export class SubmitComponent implements OnInit {
   ngOnInit() {
   }
 
-  async callme(el: HTMLInputElement) {
-    const nums: string[] = el.value.split(/[\s,]+/).filter(n => n !== '');
-    await this.pubEventFunc(nums);
-    el.value = '';
+  async callme(numsEl: HTMLInputElement, mesgEl: HTMLInputElement) {
+    const nums: string[] = numsEl.value.split(/[\s,]+/).filter(n => n !== '');
+    await this.pubEventFunc([nums, mesgEl.value]);
+    numsEl.value = ''; mesgEl.value = '';
   }
 }

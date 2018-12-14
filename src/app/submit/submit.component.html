@@ -1,6 +1,9 @@
 <div class="container">
   <mat-form-field>
-    <textarea matInput placeholder="Enter numbers here" #numbers></textarea>
+    <textarea matInput placeholder="Enter message" #message></textarea>
   </mat-form-field>
-  <button mat-raised-button color="primary" (click)="callme(numbers)">Go!</button>
+  <mat-form-field>
+    <textarea matInput placeholder="Enter numbers here, separated by commas or whitespaces" #numbers></textarea>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="callme(numbers,message)">Go!</button>
 </div>
