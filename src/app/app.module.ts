@@ -6,7 +6,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatListModule, MatIconModule } from '@angular/material';
+import { MatListModule, MatIconModule, MatFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
 import { EventComponent } from './event/event.component';
 import { CallComponent } from './call/call.component';
 import { TranscriptionComponent } from './transcription/transcription.component';
@@ -26,7 +26,10 @@ import { SubmitComponent } from './submit/submit.component';
     AngularFirestoreModule,
     BrowserAnimationsModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,6 @@
-<p>
-  submit works!
-</p>
+<div class="container">
+  <mat-form-field>
+    <textarea matInput placeholder="Enter numbers here" #numbers></textarea>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="callme(numbers)">Go!</button>
+</div>
