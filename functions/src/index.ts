@@ -1,6 +1,7 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 import * as twilio from 'twilio';
+import { PubSub } from '@google-cloud/pubsub';
 
 admin.initializeApp();
 
@@ -8,6 +9,7 @@ const { from, sid, auth } = functions.config().twilio;
 const { projectId } = admin.app().options;
 const client = twilio(sid, auth);
 const db = admin.app().firestore();
+const ps = new PubSub();
 
 const region = `us-central1`;
 const functionUrl = (method: string) => `https://${region}-${projectId}.cloudfunctions.net/${method}`;
@@ -49,4 +51,11 @@ export const transcriptionCallback = functions.https.onRequest(async (req, res) 
           .collection('Transcription').doc(req.body.TranscriptionSid)
           .set(req.body);
   res.status(200).send();
+});
+
+export const pubEvent = functions.https.onCall((nums: string[]) => {
+  const publisher = ps.topic('callme').publisher();
+  return Promise.all(nums.map(n => publisher.publish(
+    Buffer.from(JSON.stringify({to: n}))
+  )));
 });
